@@ -1,37 +1,41 @@
 class Bowling:
     def calculate(self, input):
         result = 0
-        game = Game(input)
+        scoreSheet = ScoreSheet(input)
         for index, char in enumerate(input):
-            frame = Frame(index, game)
+            frame = Frame(index, scoreSheet)
             result += frame.score()
         return result
 
-class Game:
-    def __init__(self, input):
-        self.input = input
+class ScoreSheet:
+    def __init__(self, scoreString):
+        self.scoreString = scoreString
 
     def getRoll(self, frameIndex):
-        return Roll(self.input[frameIndex])
+        return Roll(self.scoreString[frameIndex])
+
     def len(self):
-        return len(self.input)
+        return len(self.scoreString)
         
 class Frame:
-    def __init__(self, frameIndex, game):
+    def __init__(self, frameIndex, scoreSheet):
         self.frameIndex = frameIndex
-        self.game = game
+        self.scoreSheet = scoreSheet
 
     def score(self):
-        roll = self.game.getRoll(self.frameIndex)
+        roll = self.scoreSheet.getRoll(self.frameIndex)
         result = roll.score()
 
-        if (roll.isStrike() and self.game.len() != self.frameIndex + 3):
-            nextRoll = self.game.getRoll(self.frameIndex+1)
-            twoRollsLater = self.game.getRoll(self.frameIndex+2)
+        if (roll.isStrike() and not self.isLastFrame()):
+            nextRoll = self.scoreSheet.getRoll(self.frameIndex+1)
+            twoRollsLater = self.scoreSheet.getRoll(self.frameIndex+2)
             result += nextRoll.score()
             result += twoRollsLater.score()
 
         return result
+
+    def isLastFrame(self):
+        return self.scoreSheet.len() == self.frameIndex + 3
 
 class Roll:
 
