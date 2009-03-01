@@ -19,6 +19,17 @@ class BowlingTest(unittest.TestCase):
     def test_bowling_shouldCalculateGameWithStrikeAndMore(self):
         score = self.bowl.calculate('X1234')
         self.assertEquals(23, score)
-    
+
+class FrameBuilderTest(unittest.TestCase):
+    def test_build_shouldSetLength_ForOneFrame(self):
+        builder = bowling.FrameBuilder('52')
+        frame = builder.build()
+        self.assertEquals(2, frame.length())
+
+    def test_build_shouldSetLength_ForOneFrameWithAStrike(self):
+        builder = bowling.FrameBuilder('X12')
+        frame = builder.build()
+        self.assertEquals(3, frame.length())
+
 if __name__=='__main__':
     unittest.main()
