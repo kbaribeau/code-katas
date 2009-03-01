@@ -2,10 +2,17 @@ class Bowling:
     def calculate(self, input):
         result = 0
         for char in input:
-            result += self.calculateSingleRoll(char)
+            roll = Roll(char)
+            result += roll.score()
         return result
 
-    def calculateSingleRoll(self, roll):
-        if (roll == 'X'):
+
+class Roll:
+
+    def __init__(self, value):
+        self.value = value
+
+    def score(self):
+        if (self.value == 'X'):
             return 10
-        return int(roll)
+        return int(self.value)
