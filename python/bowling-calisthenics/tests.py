@@ -15,6 +15,10 @@ class BowlingTest(unittest.TestCase):
     def test_bowling_shouldCalculateGameWithStrike(self):
         score = self.bowl.calculate('X12')
         self.assertEquals(13, score)
+
+    def test_bowling_shouldCalculateGameWithStrikeAndMore(self):
+        score = self.bowl.calculate('X1234')
+        self.assertEquals(23, score)
     
 if __name__=='__main__':
     unittest.main()
