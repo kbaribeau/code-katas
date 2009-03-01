@@ -52,9 +52,18 @@ class Roll:
             return 10
         return int(self.value)
 
-class FrameBuilder:
+class GameBuilder:
     def __init__(self, frameStr):
         self.frameStr = frameStr
 
     def build(self):
-        return Frame(ScoreSheet(self.frameStr))
+        game = []
+        index = 0
+        while(index < len(self.frameStr)):
+            if (Roll(self.frameStr[index]).isStrike()):
+                game.append(Frame(ScoreSheet(self.frameStr[index:index+3])))        
+                index += 3
+            else:
+                game.append(Frame(ScoreSheet(self.frameStr[index:index+2])))
+                index += 2
+        return game
