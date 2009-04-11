@@ -12,7 +12,7 @@ public class Game {
         return rolls.length;
     }
 
-    public String getRoll(int i) {
-        return String.valueOf(rolls[i]);
+    public Roll getRoll(int i) {
+        return new Roll(rolls[i]);
     }
 }
