@@ -5,14 +5,8 @@ public class Calculator {
         int result = 0;
         Game game = new Game(input.toCharArray());
         for (int i = 0; i < game.length(); i++) {
-            if (game.getRoll(i).isSpare()) {
-                result -= game.getRoll(i - 1).calculateScore();
-                result += 10;
-                result += game.getRoll(i + 1).calculateScore();
-                if (i == game.length() - 2) {
-                    return result;
-                }
-            } else if (game.getRoll(i).isStrike()) {
+            Roll currentRoll = game.getRoll(i);
+            if (currentRoll.isStrike()) {
                 if (game.getRoll(i + 2).isSpare()) {
                     result += 20;
                 } else {
@@ -23,8 +17,15 @@ public class Calculator {
                 if (i == game.length() - 3) {
                     return result;
                 }
+            } else if (currentRoll.isSpare()) {
+                result -= game.getRoll(i - 1).calculateScore();
+                result += 10;
+                result += game.getRoll(i + 1).calculateScore();
+                if (i == game.length() - 2) {
+                    return result;
+                }
             } else {
-                result += game.getRoll(i).calculateScore();
+                result += currentRoll.calculateScore();
             }
         }
 
