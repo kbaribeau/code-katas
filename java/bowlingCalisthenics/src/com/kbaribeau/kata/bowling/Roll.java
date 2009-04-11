@@ -7,14 +7,18 @@ public class Roll {
         this.roll = roll;
     }
 
-    public char getValue() {
-        return roll;
-    }
-
     public int calculateScore() {
-        if (getValue() == 'X') {
+        if (isStrike()) {
             return 10;
         }
-        return Integer.parseInt(String.valueOf(getValue()));
+        return Integer.parseInt(String.valueOf(roll));
+    }
+
+    public boolean isStrike() {
+        return roll == 'X';
+    }
+
+    public boolean isSpare() {
+        return roll == '/';
     }
 }
