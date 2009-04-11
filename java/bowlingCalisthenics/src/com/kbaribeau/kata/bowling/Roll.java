@@ -10,4 +10,11 @@ public class Roll {
     public char getValue() {
         return roll;
     }
+
+    public int calculateScoreForSingleRoll() {
+        if (getValue() == 'X') {
+            return 10;
+        }
+        return Integer.parseInt(String.valueOf(getValue()));
+    }
 }
