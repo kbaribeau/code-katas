@@ -11,7 +11,7 @@ public class Roll {
         return roll;
     }
 
-    public int calculateScoreForSingleRoll() {
+    public int calculateScore() {
         if (getValue() == 'X') {
             return 10;
         }
