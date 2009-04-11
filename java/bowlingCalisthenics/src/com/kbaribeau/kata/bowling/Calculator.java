@@ -7,9 +7,9 @@ public class Calculator {
         for (int i = 0; i < rolls.length; i++) {
             char c = rolls[i];
             if (c == '/') {
-                result -= calculateScoreForSingleRoll(rolls[i - 1]);
+                result -= calculateScoreForSingleRoll(String.valueOf(rolls[i - 1]));
                 result += 10;
-                result += calculateScoreForSingleRoll(rolls[i + 1]);
+                result += calculateScoreForSingleRoll(String.valueOf(rolls[i + 1]));
                 if (i == rolls.length - 2) {
                     return result;
                 }
@@ -18,24 +18,24 @@ public class Calculator {
                     result += 20;
                 } else {
                     result += 10;
-                    result += calculateScoreForSingleRoll(rolls[i + 1]);
-                    result += calculateScoreForSingleRoll(rolls[i + 2]);
+                    result += calculateScoreForSingleRoll(String.valueOf(rolls[i + 1]));
+                    result += calculateScoreForSingleRoll(String.valueOf(rolls[i + 2]));
                 }
                 if (i == rolls.length - 3) {
                     return result;
                 }
             } else {
-                result += calculateScoreForSingleRoll(c);
+                result += calculateScoreForSingleRoll(String.valueOf(c));
             }
         }
 
         return result;
     }
 
-    private int calculateScoreForSingleRoll(char input) {
-        if (input == 'X') {
+    private int calculateScoreForSingleRoll(String inputStr) {
+        if (inputStr.charAt(0) == 'X') {
             return 10;
         }
-        return Integer.parseInt(String.valueOf(input));
+        return Integer.parseInt(inputStr);
     }
 }
