@@ -3,25 +3,25 @@ package com.kbaribeau.kata.bowling;
 public class Calculator {
     public int score(String input) {
         int result = 0;
-        char[] rolls = input.toCharArray();
-        for (int i = 0; i < rolls.length; i++) {
-            char c = rolls[i];
+        Game game = new Game(input.toCharArray());
+        for (int i = 0; i < game.length(); i++) {
+            char c = game.getRoll(i);
             if (c == '/') {
-                result -= calculateScoreForSingleRoll(String.valueOf(rolls[i - 1]));
+                result -= calculateScoreForSingleRoll(String.valueOf(game.getRoll(i - 1)));
                 result += 10;
-                result += calculateScoreForSingleRoll(String.valueOf(rolls[i + 1]));
-                if (i == rolls.length - 2) {
+                result += calculateScoreForSingleRoll(String.valueOf(game.getRoll(i + 1)));
+                if (i == game.length() - 2) {
                     return result;
                 }
             } else if (c == 'X') {
-                if (rolls[i + 2] == '/') {
+                if (game.getRoll(i + 2) == '/') {
                     result += 20;
                 } else {
                     result += 10;
-                    result += calculateScoreForSingleRoll(String.valueOf(rolls[i + 1]));
-                    result += calculateScoreForSingleRoll(String.valueOf(rolls[i + 2]));
+                    result += calculateScoreForSingleRoll(String.valueOf(game.getRoll(i + 1)));
+                    result += calculateScoreForSingleRoll(String.valueOf(game.getRoll(i + 2)));
                 }
-                if (i == rolls.length - 3) {
+                if (i == game.length() - 3) {
                     return result;
                 }
             } else {
