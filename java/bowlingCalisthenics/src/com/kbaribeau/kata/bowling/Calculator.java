@@ -3,34 +3,34 @@ package com.kbaribeau.kata.bowling;
 public class Calculator {
     public int score(String input) {
         int result = 0;
-        GameIterator gameIterator = new GameIterator(new Game(input.toCharArray()));
-        while (!gameIterator.atEnd()) {
-            Roll currentRoll = gameIterator.getRoll();
+        RollIterator rollIterator = new RollIterator(new RollCollection(input.toCharArray()));
+        while (!rollIterator.atEnd()) {
+            Roll currentRoll = rollIterator.getRoll();
             if (currentRoll.isStrike()) {
-                if (gameIterator.next().next().getRoll().isSpare()) {
+                if (rollIterator.next().next().getRoll().isSpare()) {
                     result += 20;
                 } else {
                     result += 10;
-                    GameIterator nextRoll = gameIterator.next();
+                    RollIterator nextRoll = rollIterator.next();
                     result += nextRoll.currentRollScore();
                     result += nextRoll.next().currentRollScore();
                 }
 
-                if (gameIterator.atLastFrame()) {
+                if (rollIterator.atLastFrame()) {
                     return result;
                 }
             } else if (currentRoll.isSpare()) {
-                result -= gameIterator.prev().currentRollScore();
+                result -= rollIterator.prev().currentRollScore();
                 result += 10;
-                result += gameIterator.next().currentRollScore();
+                result += rollIterator.next().currentRollScore();
 
-                if (gameIterator.atLastFrame()) {
+                if (rollIterator.atLastFrame()) {
                     return result;
                 }
             } else {
                 result += currentRoll.calculateScore();
             }
-            gameIterator = gameIterator.next();
+            rollIterator = rollIterator.next();
         }
 
         return result;

@@ -1,10 +1,10 @@
 package com.kbaribeau.kata.bowling;
 
-public class Game {
+public class RollCollection {
 
     private char[] rolls;
 
-    public Game(char[] rolls) {
+    public RollCollection(char[] rolls) {
         this.rolls = rolls;
     }
 
