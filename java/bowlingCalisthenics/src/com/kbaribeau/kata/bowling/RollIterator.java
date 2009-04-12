@@ -3,7 +3,7 @@ package com.kbaribeau.kata.bowling;
 public class RollIterator {
 
     private RollCollection rollCollection;
-    private int rollIndex = 0;
+    private int rollIndex = -1;
 
     public RollIterator(RollCollection rollCollection) {
         this.rollCollection = rollCollection;
