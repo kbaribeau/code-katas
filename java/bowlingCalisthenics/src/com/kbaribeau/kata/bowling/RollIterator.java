@@ -14,10 +14,6 @@ public class RollIterator {
         this.rollIndex = rollIndex;
     }
 
-    public boolean atEnd() {
-        return rollCollection.length() == rollIndex;
-    }
-
     public Roll getRoll() {
         return rollCollection.getRoll(rollIndex);
     }
