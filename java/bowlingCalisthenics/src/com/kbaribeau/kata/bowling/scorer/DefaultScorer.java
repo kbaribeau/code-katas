@@ -1,6 +1,8 @@
-package com.kbaribeau.kata.bowling;
+package com.kbaribeau.kata.bowling.scorer;
 
-public class DefaultScorer extends Scorer {
+import com.kbaribeau.kata.bowling.RollIterator;
+
+class DefaultScorer extends Scorer {
     public DefaultScorer(RollIterator rollIterator) {
         super(rollIterator);
     }

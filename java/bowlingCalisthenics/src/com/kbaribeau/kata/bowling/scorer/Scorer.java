@@ -1,4 +1,6 @@
-package com.kbaribeau.kata.bowling;
+package com.kbaribeau.kata.bowling.scorer;
+
+import com.kbaribeau.kata.bowling.RollIterator;
 
 public abstract class Scorer {
     protected RollIterator rollIterator;
