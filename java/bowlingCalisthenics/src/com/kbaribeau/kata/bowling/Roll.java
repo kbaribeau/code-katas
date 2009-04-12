@@ -22,7 +22,7 @@ public class Roll {
         return roll == '/';
     }
 
-    public int getDistanceToEnd() {
+    public int distanceToEnd() {
         if (isSpare()) {
             return 2;
         }

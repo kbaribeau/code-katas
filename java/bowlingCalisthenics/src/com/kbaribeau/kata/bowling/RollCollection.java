@@ -12,7 +12,7 @@ public class RollCollection {
         return rolls.length;
     }
 
-    public Roll getRoll(int i) {
+    public Roll rollAt(int i) {
         return new Roll(rolls[i]);
     }
 }
