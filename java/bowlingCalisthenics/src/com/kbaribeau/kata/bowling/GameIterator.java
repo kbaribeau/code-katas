@@ -29,4 +29,8 @@ public class GameIterator {
     public GameIterator prev() {
         return new GameIterator(game, rollIndex - 1);
     }
+
+    public int currentRollScore() {
+        return getRoll().calculateScore();
+    }
 }
