@@ -8,6 +8,8 @@ class SpareScorer extends Scorer {
     }
 
     public int score() {
-        return 10 - rollIterator.prev().currentRollScore() + rollIterator.next().currentRollScore();
+        RollIterator previousRoll = rollIterator.prev();
+        RollIterator nextRoll = rollIterator.next();
+        return 10 - previousRoll.score() + nextRoll.score();
     }
 }

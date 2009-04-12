@@ -26,7 +26,7 @@ public class RollIterator {
         return new RollIterator(rollCollection, rollIndex - 1);
     }
 
-    public int currentRollScore() {
+    public int score() {
         return getRoll().calculateScore();
     }
 

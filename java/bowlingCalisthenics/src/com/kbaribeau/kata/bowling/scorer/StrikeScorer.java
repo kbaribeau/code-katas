@@ -14,8 +14,8 @@ class StrikeScorer extends Scorer {
         } else {
             result += 10;
             RollIterator nextRoll = rollIterator.next();
-            result += nextRoll.currentRollScore();
-            result += nextRoll.next().currentRollScore();
+            result += nextRoll.score();
+            result += nextRoll.next().score();
         }
         return result;
     }

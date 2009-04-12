@@ -8,6 +8,6 @@ class DefaultScorer extends Scorer {
     }
 
     public int score() {
-        return rollIterator.currentRollScore();
+        return rollIterator.score();
     }
 }
