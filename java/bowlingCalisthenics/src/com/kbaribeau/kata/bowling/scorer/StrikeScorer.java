@@ -8,15 +8,11 @@ class StrikeScorer extends Scorer {
     }
 
     public int score() {
-        int result = 0;
         if (rollIterator.next().next().getRoll().isSpare()) {
-            result += 20;
-        } else {
-            result += 10;
-            RollIterator nextRoll = rollIterator.next();
-            result += nextRoll.score();
-            result += nextRoll.next().score();
+            return 20;
         }
-        return result;
+
+        RollIterator nextRoll = rollIterator.next();
+        return 10 + nextRoll.score() + nextRoll.next().score();
     }
 }
