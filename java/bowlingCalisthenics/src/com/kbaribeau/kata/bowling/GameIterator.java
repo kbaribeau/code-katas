@@ -33,4 +33,10 @@ public class GameIterator {
     public int currentRollScore() {
         return getRoll().calculateScore();
     }
+
+    public boolean atLastFrame() {
+        int distanceToEnd = getRoll().isSpare() ? 2 : 3;
+        return rollIndex + distanceToEnd == game.length();
+
+    }
 }

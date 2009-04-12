@@ -15,14 +15,14 @@ public class Calculator {
                     result += nextRoll.currentRollScore();
                     result += nextRoll.next().currentRollScore();
                 }
-                if (gameIterator.next().next().next().atEnd()) {
+                if (gameIterator.atLastFrame()) {
                     return result;
                 }
             } else if (currentRoll.isSpare()) {
                 result -= gameIterator.prev().currentRollScore();
                 result += 10;
                 result += gameIterator.next().currentRollScore();
-                if (gameIterator.next().next().atEnd()) {
+                if (gameIterator.atLastFrame()) {
                     return result;
                 }
             } else {
