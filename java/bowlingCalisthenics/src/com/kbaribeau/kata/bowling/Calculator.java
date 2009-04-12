@@ -15,6 +15,7 @@ public class Calculator {
                     result += nextRoll.currentRollScore();
                     result += nextRoll.next().currentRollScore();
                 }
+
                 if (gameIterator.atLastFrame()) {
                     return result;
                 }
@@ -22,6 +23,7 @@ public class Calculator {
                 result -= gameIterator.prev().currentRollScore();
                 result += 10;
                 result += gameIterator.next().currentRollScore();
+
                 if (gameIterator.atLastFrame()) {
                     return result;
                 }

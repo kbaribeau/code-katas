@@ -13,6 +13,13 @@ public class Game {
     }
 
     public Roll getRoll(int i) {
+        char roll = rolls[i];
+        if (roll == '/') {
+            return new Spare(roll);
+        }
+        if (roll == 'X') {
+            return new Strike(roll);
+        }
         return new Roll(rolls[i]);
     }
 }
