@@ -8,7 +8,7 @@ class StrikeScorer extends Scorer {
     }
 
     public int score() {
-        if (rollIterator.next().next().currentRoll().isSpare()) {
+        if (rollIterator.next().next().roll().isSpare()) {
             return 20;
         }
 

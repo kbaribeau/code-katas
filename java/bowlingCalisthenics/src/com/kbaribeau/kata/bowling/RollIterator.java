@@ -14,7 +14,7 @@ public class RollIterator {
         this.rollIndex = rollIndex;
     }
 
-    public Roll currentRoll() {
+    public Roll roll() {
         return rollCollection.rollAt(rollIndex);
     }
 
@@ -27,11 +27,11 @@ public class RollIterator {
     }
 
     public int score() {
-        return currentRoll().calculateScore();
+        return roll().calculateScore();
     }
 
     public boolean atLastFrame() {
-        return rollIndex + currentRoll().distanceToEnd() == rollCollection.length();
+        return rollIndex + roll().distanceToEnd() == rollCollection.length();
 
     }
 }

@@ -5,7 +5,7 @@ import com.kbaribeau.kata.bowling.RollIterator;
 
 public class ScorerFactory {
     public static Scorer create(RollIterator rollIterator) {
-        Roll currentRoll = rollIterator.currentRoll();
+        Roll currentRoll = rollIterator.roll();
         if (currentRoll.isStrike()) {
             return new StrikeScorer(rollIterator);
         }
