@@ -21,4 +21,14 @@ public class Roll {
     public boolean isSpare() {
         return roll == '/';
     }
+
+    public int getDistanceToEnd() {
+        if (isSpare()) {
+            return 2;
+        }
+        if (isStrike()) {
+            return 3;
+        }
+        return 1;
+    }
 }

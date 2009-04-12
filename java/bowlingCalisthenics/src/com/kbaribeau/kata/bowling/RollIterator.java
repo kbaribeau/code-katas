@@ -35,8 +35,7 @@ public class RollIterator {
     }
 
     public boolean atLastFrame() {
-        int distanceToEnd = getRoll().isSpare() ? 2 : 3;
-        return rollIndex + distanceToEnd == rollCollection.length();
+        return rollIndex + getRoll().getDistanceToEnd() == rollCollection.length();
 
     }
 }
