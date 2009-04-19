@@ -15,13 +15,14 @@ public class BowlingCalculator {
                     return result;
                 }
             } else if (roll.isStrike()) {
-                if (rolls[i + 2] == '/') {
+                Roll twoRollsFromNow = new Roll(rolls[i + 2]);
+                if (twoRollsFromNow.isSpare()) {
                     result += 20;
                 } else {
 
                     result += 10 +
                             new Roll(rolls[i + 1]).score() +
-                            new Roll(rolls[i + 2]).score();
+                            twoRollsFromNow.score();
                 }
                 if (rolls.length == i + 3) {
                     return result;
