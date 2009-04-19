@@ -5,51 +5,33 @@ public class BowlingCalculator {
         int result = 0;
         char[] rolls = input.toCharArray();
         for (int i = 0; i < rolls.length; i++) {
-            char roll = rolls[i];
-            if (roll == '/') {
+            Roll roll = new Roll(rolls[i]);
+            if (roll.isSpare()) {
+
                 result += 10 -
-                        calculateSingleRoll(getPrevRoll(rolls, i)) +
-                        calculateSingleRoll(getNextRoll(rolls, i));
+                        new Roll(rolls[i - 1]).score() +
+                        new Roll(rolls[i + 1]).score();
                 if (rolls.length == i + 2) {
                     return result;
                 }
-            } else if (roll == 'X') {
-                if (getTwoRollsAhead(rolls, i) == '/') {
+            } else if (roll.isStrike()) {
+                if (rolls[i + 2] == '/') {
                     result += 20;
                 } else {
+
                     result += 10 +
-                            calculateSingleRoll(getNextRoll(rolls, i)) +
-                            calculateSingleRoll(getTwoRollsAhead(rolls, i));
+                            new Roll(rolls[i + 1]).score() +
+                            new Roll(rolls[i + 2]).score();
                 }
                 if (rolls.length == i + 3) {
                     return result;
                 }
             } else {
-                result += calculateSingleRoll(roll);
+
+                result += roll.score();
             }
         }
         return result;
     }
 
-    private char getTwoRollsAhead(char[] rolls, int i) {
-        return rolls[i + 2];
-    }
-
-    private char getPrevRoll(char[] rolls, int i) {
-        return rolls[i - 1];
-    }
-
-    private char getNextRoll(char[] rolls, int i) {
-        return rolls[i + 1];
-    }
-
-    private int calculateSingleRoll(char roll) {
-        if (roll == 'X') {
-            return 10;
-        }
-        if (roll == '-') {
-            return 0;
-        }
-        return Integer.parseInt(String.valueOf(roll));
-    }
 }
